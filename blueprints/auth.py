@@ -4,21 +4,12 @@ from model.model import Model
 auth = Blueprint("auth", __name__, static_folder="../static", template_folder="../templates")
 m = Model()
 
-
-# HELPER ----------------------------------------+
-def is_loggedin():
-    if 'username' in session:
-        return redirect("/dashboard")
-    else:
-        return redirect("/login")
-
 # ENDPOINT --------------------------------------+
 @auth.route("/")
 @auth.route("/index")
-@auth.route("/dashboard")
 def index():
     if 'username' in session:
-        return render_template("user/dashboard.html")
+        return redirect("/dashboard")
     else:
         return redirect("/login?msg=you must Login to continue")
 

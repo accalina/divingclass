@@ -333,7 +333,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="{% if data['sidebar']['parent'] == 'dashboard' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -341,11 +341,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="/dashboard"><i class="fa fa-circle-o"></i> Dashboard </a></li>
-            <li><a href="/subscribe"><i class="fa fa-circle-o"></i> Subscription</a></li>
+            <li {% if data['sidebar']['child'] == 'dashboard' %} class="active" {% endif %} ><a href="/dashboard"><i class="fa fa-circle-o"></i> Dashboard </a></li>
+            <li {% if data['sidebar']['child'] == 'subscribe' %} class="active" {% endif %} ><a href="/subscribe"><i class="fa fa-circle-o"></i> Subscription</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="{% if data['sidebar']['parent'] == 'materi' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
             <span>Materi</span>
@@ -354,8 +354,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/soal"><i class="fa fa-circle-o"></i> Soal</a></li>
-            <li><a href="/materi"><i class="fa fa-circle-o"></i> Materi</a></li>
+            <li {% if data['sidebar']['child'] == 'soal' %} class="active" {% endif %}><a href="/soal"><i class="fa fa-circle-o"></i> Soal</a></li>
+            <li {% if data['sidebar']['child'] == 'materi' %} class="active" {% endif %}><a href="/materi"><i class="fa fa-circle-o"></i> Materi</a></li>
           </ul>
         </li>
         <li class="treeview">

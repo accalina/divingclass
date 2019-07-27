@@ -5,9 +5,6 @@ app.config['SECRET_KEY'] = "DIVING_APP_SCHOOL"
 from blueprints.auth import auth
 app.register_blueprint(auth)
 
-from blueprints.soal import soal
-app.register_blueprint(soal)
-
 from blueprints.user import user
 app.register_blueprint(user)
 
