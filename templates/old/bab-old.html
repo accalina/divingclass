@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bab 1</h1>
+        <form action="/soal/{{ data['endpoint'] }}" method="POST">
+
+            {% for row in data['db'] %}
+            <h3>{{ loop.index }} . {{ row[0] }}</h3>
+            <input type="text" name="soal{{loop.index}}" value="{{ row[0] }}" hidden>
+
+            <select name="jawab{{loop.index}}">
+                <option value=""></option>
+                {% for opt in row[2] %}
+                <option value="{{ opt }}">{{ opt }}</option>
+                {% endfor %}
+            </select>
+
+            <hr>
+            {% endfor %}
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>

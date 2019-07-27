@@ -1,0 +1,65 @@
+{% extends 'base-dashboard.html' %}
+
+<!-- Set Title -->
+{% block title %} Dashboard {% endblock %}
+<!-- /Set Title -->
+
+
+{% block content %}
+    <!-- Main content -->
+    <section class="content">
+      <!-- Main row -->
+      <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable">
+
+          <!-- TO DO List -->
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="ion ion-clipboard"></i>
+
+              <h3 class="box-title">Review</h3>
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              
+              {% if data['nilai'] >= 7 %}
+                <h3>Nilai anda: ({{ data['nilai'] }}/10) <span class="label bg-green">Lulus</span> </h3>
+              {% else %}
+                <h3>Nilai anda: ({{ data['nilai'] }}/10) <span class="label bg-red">Gagal</span> </h3>
+              {% endif %}
+              
+              <table class="table table-bordered">
+                <tr>
+                  <th width="700px">Soal</th>
+                  <th>Jawaban yang benar</th>
+                  <th>Jawaban anda</th>
+                </tr>
+              
+                {% for row in data['review'] %}
+                <tr>
+                  <td>{{ loop.index }}. {{ row['soal'] }}</td>
+                  <td class="bg-green">{{ row['dbAns'] }}</td>
+                  <td class="bg-red">{{ row['yourAns'] }}</td>
+                </tr>
+                {% endfor %}
+              
+              </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix no-border">
+              <button type="button" class="btn btn-default pull-right"><i class="fa fa-clipboard"></i> Kembali ke Halaman Soal</button>
+            </div>
+          </div>
+          <!-- /.box -->
+
+        </section>
+        <!-- /.Left col -->
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Review</h1>
+        
+        <h3>Nilai: {{ data['nilai'] }}</h3>
+
+        <table border=1>
+            <tr>
+                <th width="700px">Soal</th>
+                <th>Jawaban yang benar</th>
+                <th>Jawaban anda</th>
+            </tr>
+
+            {% for row in data['review'] %}
+            <tr>
+                <td>{{ row['soal'] }}</td>
+                <td style="background-color:limegreen">{{ row['dbAns'] }}</td>
+                <td style="background-color:firebrick;color:white">{{ row['yourAns'] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</body>
+
+</html>

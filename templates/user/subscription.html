@@ -1,0 +1,109 @@
+{% extends 'base-dashboard.html' %}
+
+<!-- Set Title -->
+{% block title %} Dashboard {% endblock %}
+<!-- /Set Title -->
+
+
+{% block content %}
+    <!-- Main content -->
+    <section class="content">
+      <!-- Main row -->
+      <div class="row">
+
+
+        <!-- Left col -->
+        <section class="col-lg-6 connectedSortable">
+
+          <!-- Subscription -->
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="ion ion-clipboard"></i>
+
+              <h3 class="box-title">Subscription</h3>
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              
+              <table class="table">
+                <tr>
+                  <th> Username : </th>
+                  <th>{{ session['username'] }}</th>
+                </tr>
+                <tr>
+                  <th> Fullname : </th>
+                  <th>{{ session['fullname'] }}</th>
+                </tr>
+                <tr>
+                  <th> User Status : </th>
+                  <th>
+                    {{ session['level'] }}
+                    <!-- {% if session['level'] == 1 %}
+                      <span class="label bg-green"> Student </span>
+                    {% elif session['level'] == 9 %}
+                      <span class="label bg-blue"> Administrator </span>
+                    {% endif %} -->
+                  </th>
+                </tr>
+              </table>
+              
+            </div>
+          </div>
+          <!-- /.box -->
+
+        </section>
+        <!-- /.Left col -->
+
+        <!-- Left col -->
+        <section class="col-lg-6 connectedSortable">
+        
+          <!-- Subscription -->
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="ion ion-clipboard"></i>
+        
+              <h3 class="box-title">Subscription</h3>
+        
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+        
+              <table class="table table-bordered table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Modul</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in data['userdata'] %}
+                  <tr>
+                    <td>{{ item['module'] }}</td>
+                    <td>
+                      {% if item['active'] != 0 %}
+                      <span class="label bg-green">Pembayaran sudah Lunas, Module siap digunakan</span>
+                      {% else %}
+                      <span class="label bg-red"> Data Pembayaran tidak ditemukan</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        
+            </div>
+          </div>
+          <!-- /.box -->
+        
+        </section>
+        <!-- /.Left col -->
+
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+{% endblock %}
