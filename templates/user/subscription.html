@@ -1,11 +1,12 @@
 {% extends 'base-dashboard.html' %}
 
 <!-- Set Title -->
-{% block title %} Dashboard {% endblock %}
+{% block title %} Subscription {% endblock %}
 <!-- /Set Title -->
 
 
 {% block content %}
+<script src="https://unpkg.com/vue"></script>
     <!-- Main content -->
     <section class="content">
       <!-- Main row -->
@@ -13,14 +14,14 @@
 
 
         <!-- Left col -->
-        <section class="col-lg-6 connectedSortable">
+        <section class="col-lg-5 connectedSortable">
 
           <!-- Subscription -->
           <div class="box box-primary">
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
 
-              <h3 class="box-title">Subscription</h3>
+              <h3 class="box-title">User Data</h3>
 
             </div>
             <!-- /.box-header -->
@@ -57,7 +58,7 @@
         <!-- /.Left col -->
 
         <!-- Left col -->
-        <section class="col-lg-6 connectedSortable">
+        <section class="col-lg-7 connectedSortable">
         
           <!-- Subscription -->
           <div class="box box-primary">
@@ -76,6 +77,7 @@
                   <tr>
                     <th>Modul</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,6 +91,20 @@
                       <span class="label bg-red"> Data Pembayaran tidak ditemukan</span>
                       {% endif %}
                     </td>
+                    
+                    <td>
+                    {% if item['active'] == 0 %}
+                      <form action="/subscribe" method="POST" enctype="multipart/form-data">
+                        <input name="module" value="{{ item['module'] }}" hidden>
+                        <button v-if="modul{{loop.index}}!=''" type="button" @click="modul{{loop.index}}=''" class="btn btn-danger">Cancel</button>
+                        <input v-if="modul{{loop.index}}!=''" type="submit" class="btn btn-primary" value="Kirim">
+                        <input v-model="modul{{loop.index}}" name="uploadfile" type="file" class="btn btn-primary" :style="modul{{loop.index}}!='' ? 'visibility: hidden' : 'visibility: visible'">
+                      </form>
+                    {% else %}
+                      <a target="_blank" href="/static/uploads/{{ item['payment'] }}"> <span class="label bg-green">Lihat Bukti Pembayaran</span> </a>
+                    {% endif %}
+                    </td>
+                    
                   </tr>
                   {% endfor %}
                 </tbody>
@@ -106,4 +122,22 @@
 
     </section>
     <!-- /.content -->
+
+    <script>
+      app = new Vue({
+        el: "section.content",
+        data: {
+          modul1: "",
+          modul2: "",
+          modul3: "",
+          modul4: "",
+          modul5: "",
+          modul6: "",
+          modul7: "",
+          modul8: "",
+          modul9: "",
+          modul10: "",
+        }
+      })
+    </script>
 {% endblock %}

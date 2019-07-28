@@ -9,7 +9,10 @@ m = Model()
 @auth.route("/index")
 def index():
     if 'username' in session:
-        return redirect("/dashboard")
+        if session['level'] == 9:
+            return redirect("/admin")
+        else:
+            return redirect("/dashboard")
     else:
         return redirect("/login?msg=you must Login to continue")
 
@@ -30,11 +33,11 @@ def login():
                 session['username'] = (result[0]['username']).capitalize()
                 session['fullname'] = result[0]['fullname']
                 session['level'] = result[0]['level']
-                return redirect("/dashboard")
+                return redirect("/index")
             else:
                 return redirect(f"/login?msg=Invalid Username / Password")
     else:
-        return redirect("/dashboard")
+        return redirect("/index")
 
 
 @auth.route("/register", methods=["GET", "POST"])

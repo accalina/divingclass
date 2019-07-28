@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2019 at 03:38 PM
+-- Generation Time: Jul 28, 2019 at 05:04 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -41,7 +41,9 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`userid`, `username`, `password`, `fullname`, `level`) VALUES
-(1, 'accalina', '$2b$12$uX9HiL62aAnfYPyfK70NZex36oPFsfNsTDla9xkFxfrx6Aits.P1.', 'accalina', 1);
+(1, 'accalina', '$2b$12$oOL/jDP75o6CGhXh/8py8e8Frg2vZ5UBv7JIaSHqSi9sNWaxqy.02', 'Accalina Shirosachi', 1),
+(2, 'didit', '$2b$12$vY88mU.SVmfLtWJHh/.XIOpotdNAfitGAKvuceRxJiCgBt3Tnxn5G', 'Didit Nugroho', 1),
+(3, 'admin', '$2b$12$S.1MOFjtLnB66Ayhvp6b1OaXUEs.Z2SC3aE1wqFeO/EZeb79HZD8C', 'Administrator', 9);
 
 -- --------------------------------------------------------
 
@@ -62,13 +64,20 @@ CREATE TABLE `module_access` (
 --
 
 INSERT INTO `module_access` (`no`, `userid`, `module`, `active`, `payment`) VALUES
-(1, 1, 'bab1', 1, '...'),
-(2, 1, 'bab2', 0, '...'),
-(3, 1, 'bab3', 0, '...'),
+(1, 1, 'bab1', 1, '1_bab1_bukti-pembayaran_03-36-41.png'),
+(2, 1, 'bab2', 1, '1_bab2_bukti-pembayaran_03-40-08.jpg'),
+(3, 1, 'bab3', 1, '1_bab3_bukti-pembayaran_04-06-07.png'),
 (4, 1, 'bab4', 0, '...'),
 (5, 1, 'bab5', 0, '...'),
 (6, 1, 'bab6', 0, '...'),
-(7, 1, 'final', 0, '...');
+(7, 1, 'final', 0, '...'),
+(8, 2, 'bab1', 1, '2_bab1_bukti-pembayaran_09-41-15.jpg'),
+(9, 2, 'bab2', 1, '2_bab2_bukti-pembayaran_09-42-11.jpg'),
+(10, 2, 'bab3', 0, '...'),
+(11, 2, 'bab4', 0, '...'),
+(12, 2, 'bab5', 0, '...'),
+(13, 2, 'bab6', 0, '...'),
+(14, 2, 'final', 0, '...');
 
 -- --------------------------------------------------------
 
@@ -105,7 +114,7 @@ INSERT INTO `questions` (`no`, `question`, `opt1`, `opt2`, `opt3`, `opt4`, `ans`
 (11, 'Bergantung pada jenis perlengkapan yang anda gunakan, _________ mungkin adalah yang terakhir dikenakan.', 'Fin', 'Weight Belt', 'Sepatu Selam', 'Buoyancy Compensator Device', 'Fin', 'bab2'),
 (12, 'Berapakah batas kecepatan penyelam pada saat naik ke permukaan?', '15 meter / menit', '5 meter / menit', '9 meter / menit', '10 meter / menit', '9 meter / menit', 'bab2'),
 (13, 'Jika anda tidak dapat menemukan regulator tahap kedua yang utama pada saat penyelaman, pilihan lain adalah bernafas menggunakan _______ sampai anda dapat ', 'Snorkel', 'Octopus', 'Oral Inflator', 'Valve', 'Octopus', 'bab2'),
-(14, 'Pemasangan perlengkapan Scuba (Scuba Unit Assembly).\r\n1) Pompa dan kempiskan BCD\r\n2) Berilah tekanan secara perlahan pada sistem tersebut\r\n3) Pasang regulator ke tabung udara\r\n4) Baringkan Unit Scuba\r\n5) Periksa regulator\r\n6) Pasang BCD ke tabung udara\r\n7) Pasang pompa bertekanan rendah\r\nPilihlah urutan yang benar untuk memasang seluruh perlengkapan Unit Scuba', '2, 3, 5, 6, 7, 1, 4', '6, 5, 3, 7, 2, 1, 4', '6, 5, 7, 3, 1, 2, 4', '5, 6, 2, 1, 7, 3, 4', '6, 5, 3, 7, 2, 1, 4', 'bab2'),
+(14, 'Pemasangan perlengkapan Scuba (Scuba Unit Assembly).\r\n1) Pompa dan kempiskan BCD\r\n2) Berilah tekanan secara perlahan pada sistem tersebut\r\n3) Pasang regulator ke tabung udara\r\n4) Baringkan Unit Scuba\r\n5) Periksa regulator\r\n6) Pasang BCD ke tabung udara\r\n7) Pasang pompa bertekanan rendah\r\nPilihlah urutan yang benar untuk memasang seluruh perlengkapan Unit Scuba', 'a', 'b', 'c', 'd', 'c', 'bab2'),
 (15, 'Bagaimanapun cara anda mengenakan unit scuba, pastikan _________ tidak mengganggu sabuk pemberat yang harus berada dalam posisi bebas dan mudah dilapaskan', 'BCD', 'Regulator', 'Tabung', 'Pointer', 'BCD', 'bab2'),
 (16, 'Pemasangan masker yang terlalu kencang dapat menyebabkan ______.', 'Mask recovery', 'Dekompresi', 'Ear squeeze', 'Mask squeeze', 'Mask squeeze', 'bab2'),
 (17, 'Manakah yang tidak termasuk teknik memasuki air?', 'Giant Stride', 'Back Roll', 'Double Step', 'Feet First Jumping', 'Double Step', 'bab2'),
@@ -170,6 +179,18 @@ INSERT INTO `resource` (`module`, `name`, `url`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `no` int(3) NOT NULL,
+  `userid` int(3) NOT NULL,
+  `reviewdata` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `scores`
 --
 
@@ -177,9 +198,28 @@ CREATE TABLE `scores` (
   `no` int(3) NOT NULL,
   `userid` int(3) NOT NULL,
   `module` varchar(12) NOT NULL,
-  `testscore` int(3) NOT NULL,
-  `finaltestscore` int(3) NOT NULL
+  `testscore` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `scores`
+--
+
+INSERT INTO `scores` (`no`, `userid`, `module`, `testscore`) VALUES
+(1, 1, 'bab1', 10),
+(2, 1, 'bab2', 0),
+(3, 1, 'bab3', 0),
+(4, 1, 'bab4', 0),
+(5, 1, 'bab5', 0),
+(6, 1, 'bab6', 0),
+(7, 1, 'final', 0),
+(8, 2, 'bab1', 9),
+(9, 2, 'bab2', 0),
+(10, 2, 'bab3', 0),
+(11, 2, 'bab4', 0),
+(12, 2, 'bab5', 0),
+(13, 2, 'bab6', 0),
+(14, 2, 'final', 0);
 
 --
 -- Indexes for dumped tables
@@ -211,6 +251,12 @@ ALTER TABLE `resource`
   ADD PRIMARY KEY (`module`);
 
 --
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`no`);
+
+--
 -- Indexes for table `scores`
 --
 ALTER TABLE `scores`
@@ -224,13 +270,13 @@ ALTER TABLE `scores`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `userid` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userid` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `module_access`
 --
 ALTER TABLE `module_access`
-  MODIFY `no` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `no` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `questions`
@@ -239,10 +285,16 @@ ALTER TABLE `questions`
   MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `no` int(3) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `scores`
 --
 ALTER TABLE `scores`
-  MODIFY `no` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `no` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

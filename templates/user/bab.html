@@ -23,6 +23,7 @@
             <div class="tab-content no-padding">
 
             <form action="/soal/{{ data['endpoint'] }}" method="POST">
+              <input type="text" name="module" value="{{ data['module']}}" hidden>
               <div class="box-body">
                 <div class="box-group" id="accordion">
                   <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
