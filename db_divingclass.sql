@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2019 at 05:04 AM
+-- Generation Time: Jul 28, 2019 at 06:23 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -67,10 +67,10 @@ INSERT INTO `module_access` (`no`, `userid`, `module`, `active`, `payment`) VALU
 (1, 1, 'bab1', 1, '1_bab1_bukti-pembayaran_03-36-41.png'),
 (2, 1, 'bab2', 1, '1_bab2_bukti-pembayaran_03-40-08.jpg'),
 (3, 1, 'bab3', 1, '1_bab3_bukti-pembayaran_04-06-07.png'),
-(4, 1, 'bab4', 0, '...'),
-(5, 1, 'bab5', 0, '...'),
-(6, 1, 'bab6', 0, '...'),
-(7, 1, 'final', 0, '...'),
+(4, 1, 'bab4', 1, '1_bab4_bukti-pembayaran_11-09-08.jpg'),
+(5, 1, 'bab5', 1, '1_bab5_bukti-pembayaran_11-09-43.jpg'),
+(6, 1, 'bab6', 1, '1_bab6_bukti-pembayaran_11-09-49.jpg'),
+(7, 1, 'final', 1, '1_final_bukti-pembayaran_11-09-54.gif'),
 (8, 2, 'bab1', 1, '2_bab1_bukti-pembayaran_09-41-15.jpg'),
 (9, 2, 'bab2', 1, '2_bab2_bukti-pembayaran_09-42-11.jpg'),
 (10, 2, 'bab3', 0, '...'),
@@ -111,16 +111,16 @@ INSERT INTO `questions` (`no`, `question`, `opt1`, `opt2`, `opt3`, `opt4`, `ans`
 (8, 'Pada waktu menggunakan tombol pengendali manual, tarik _______ sampai titik terpanjang untuk mendapatkan efisiensi terbesar dalam pengempisan.', 'Low Pressure Inflator', 'Tali penyetel', 'Katup pembuang', 'Selang Pemompa', 'Katup pembuang', 'bab1'),
 (9, 'Anda mungkin mempertimbangkan untuk menggunakan ________ di perairan yang bersuhu di bawah 65? F (16? C).', 'Pakaian Selam Kering', 'Boot', 'Pakaian Selam Basah', 'Bagasi Penyelam', 'Pakaian Selam Kering', 'bab1'),
 (10, 'Katup Deutsches Industrie Normen (DIN) digunakan pada tabung yang berkapasitas lebih dari _______ psi.', '4000', '3000', '2500', '2000', '3000', 'bab1'),
-(11, 'Bergantung pada jenis perlengkapan yang anda gunakan, _________ mungkin adalah yang terakhir dikenakan.', 'Fin', 'Weight Belt', 'Sepatu Selam', 'Buoyancy Compensator Device', 'Fin', 'bab2'),
-(12, 'Berapakah batas kecepatan penyelam pada saat naik ke permukaan?', '15 meter / menit', '5 meter / menit', '9 meter / menit', '10 meter / menit', '9 meter / menit', 'bab2'),
-(13, 'Jika anda tidak dapat menemukan regulator tahap kedua yang utama pada saat penyelaman, pilihan lain adalah bernafas menggunakan _______ sampai anda dapat ', 'Snorkel', 'Octopus', 'Oral Inflator', 'Valve', 'Octopus', 'bab2'),
-(14, 'Pemasangan perlengkapan Scuba (Scuba Unit Assembly).\r\n1) Pompa dan kempiskan BCD\r\n2) Berilah tekanan secara perlahan pada sistem tersebut\r\n3) Pasang regulator ke tabung udara\r\n4) Baringkan Unit Scuba\r\n5) Periksa regulator\r\n6) Pasang BCD ke tabung udara\r\n7) Pasang pompa bertekanan rendah\r\nPilihlah urutan yang benar untuk memasang seluruh perlengkapan Unit Scuba', 'a', 'b', 'c', 'd', 'c', 'bab2'),
-(15, 'Bagaimanapun cara anda mengenakan unit scuba, pastikan _________ tidak mengganggu sabuk pemberat yang harus berada dalam posisi bebas dan mudah dilapaskan', 'BCD', 'Regulator', 'Tabung', 'Pointer', 'BCD', 'bab2'),
-(16, 'Pemasangan masker yang terlalu kencang dapat menyebabkan ______.', 'Mask recovery', 'Dekompresi', 'Ear squeeze', 'Mask squeeze', 'Mask squeeze', 'bab2'),
-(17, 'Manakah yang tidak termasuk teknik memasuki air?', 'Giant Stride', 'Back Roll', 'Double Step', 'Feet First Jumping', 'Double Step', 'bab2'),
-(18, 'Ear Squeeze dapat dihindari dengan melakukan ________ untuk menyetarakan tekanan telinga.', 'Equalizing', 'Regulator Clearing', 'Mask Clearing', 'Safety Stop', 'Equalizing', 'bab2'),
-(19, '_________ perlahan melalui ______ untuk menyesuaikan tekanan di dalam masker selam anda', 'meniup, mulut', 'bernafas, snorkel', 'Menghembuskan nafas, hidung', 'Menarik nafas, hidung', 'Menghembuskan nafas, hidung', 'bab2'),
-(20, 'Sewaktu anda mendekati kedalaman yang anda inginkan, jika perlu tambahkan udara ke dalam _______ untuk mendapat keseimbangan dalam air.', 'Tabung', 'BCD', 'Regulator', ' Octopus', 'BCD', 'bab2'),
+(11, 'Permukaan planet ini sesungguhnya hanya terdiri dari sedikit daratan. Kenyataannya planet ini terdiri dari _____ air.', '0.85', '0.5', '0.72', '0.65', '0.72', 'bab2'),
+(12, 'Diperkirakan bahwa produksi tumbuh-tumbuhan di lautan mungkin _____ kali lebih banyak daripada di daratan. Lebih dari ______ oksigen dihasilkan oleh tumbuhan laut.', '20, 85%', '10, 85%', '5, 50%', '20, 40%', '10, 85%', 'bab2'),
+(13, 'Bintang laut, brittle stars, bulu babi, sand dollars dan timun laut/teripang, semuanya termasuk dalam anggota kelompok hewan yang dikenal sebagai _______.', 'Moluska', 'Crustaceans', 'Coral', 'Echinodermata', 'Echinodermata', 'bab2'),
+(14, 'Kapanpun gelombang mencapai garis tepi pantai, air harus kembali ke laut. Air yang kembali menciptakan sebuah ______ .', 'Longshore Current', 'Back Current', 'Surf', 'Surge', 'Back Current', 'bab2'),
+(15, 'Penyelam bawah air mengalami _____, gerakan air yang maju dan mundur yang disebabkan oleh ernergi gelombang', 'Surge', 'Surf', 'Longshore Current', 'Back Current', 'Surge', 'bab2'),
+(16, 'Apa yang dimaksud dengan Termoklin?', 'Gelombang pasang yang bergerak melewati permukaan bumi', 'Batas antara lapisan-lapisan dari berbagai suhu pada air', 'Gelombang pasang surut', 'Gelombang Seismik', 'Batas antara lapisan-lapisan dari berbagai suhu pada air', 'bab2'),
+(17, 'Manakah yang termasuk dalam Cephalopoda?', 'Sea Fan', 'Lobster', 'Glasseye', 'Cumi-cumi', 'Cumi-cumi', 'bab2'),
+(18, 'Manakah yang termasuk ke dalam jenis Hiu tidak agresif?', 'Hammerhead', 'Sand Shark', 'Great White', 'Tiger Shark', 'Sand Shark', 'bab2'),
+(19, 'Manakah yang tidak termasuk dalam Pari penyengat?', 'Pari kupu-kupu', 'Pari manta', 'Pari kelelawar', 'Pari bulat', 'Pari manta', 'bab2'),
+(20, 'Berikut merupakan jenis-jenis Hard Coral, kecuali_____', 'Fire Coral', 'Elkhorn Coral', 'Staghorn Coral', 'Sea Fan', 'Sea Fan', 'bab2'),
 (21, 'Jumlah waktu yang digunakan dari awal anda turun (descent) hingga waktu anda mulai naik (ascent) langsung ke permukaan disebut?', 'Residual Time', 'Total Time', 'Bottom Time', 'Surface Interval', 'Bottom Time', 'bab3'),
 (22, 'Jika anda melakukan penyelaman hingga 15 meter selama 30 menit. Apa kode huruf untuk penentuan kelompok (Group Designation Letter) anda?', 'B', 'E', 'D', 'C', 'E', 'bab3'),
 (23, 'Bagaimana cara menghitung Total Time?', 'Bottom Time - Residual Time', 'Bottom Time + Residual Time', 'Bottom Time / Residual Time', 'Bottom Time x Residual Time', 'Bottom Time + Residual Time', 'bab3'),
@@ -150,7 +150,27 @@ INSERT INTO `questions` (`no`, `question`, `opt1`, `opt2`, `opt3`, `opt4`, `ans`
 (47, 'Ada berapa tingkatan instruktur dalam SSI ?', '3', '5', '4', '2', '5', 'bab5'),
 (48, 'Manakah yang tidak termasuk dalam SSI Diamond Diver ?', 'Knowledge', 'Experience', 'Equipment', 'Safety', 'Safety', 'bab5'),
 (49, 'Berapakah rentang usia untuk bisa mendapatkan Special Junior Certification ?', '10-11 tahun', '10-15 tahun', '5-10 tahun', '15-17 tahun', '10-11 tahun', 'bab5'),
-(50, 'Manakah yang merupakan kegiatan yang dilakukan sebelum penyelamannya ?', 'Safety Stop', 'Decompression Stop', 'Pre Dive Safety Check', 'Giant Stride', 'Pre Dive Safety Check', 'bab5');
+(50, 'Manakah yang merupakan kegiatan yang dilakukan sebelum penyelamannya ?', 'Safety Stop', 'Decompression Stop', 'Pre Dive Safety Check', 'Giant Stride', 'Pre Dive Safety Check', 'bab5'),
+(51, '_________ yang terpasang pada masker digunakan untuk menyetarakan tekanan dalam telinga dan sinus.', 'Lensa Masker', 'Strap', 'Nose Pockets', 'Positive Locking Device', 'Nose Pockets', 'bab6'),
+(52, 'Air menyerap panas tubuh _____ kali lebih cepat daripada udara.', '25', '15', '40', '20', '25', 'bab6'),
+(53, 'Sebuah _______ adalah salah satu pertimbangan yang paling penting dalam memilih pakaian selam basah.', 'ketebalan', 'fitur-fitur pakaian', 'ukuran yang pas', 'bahan', 'ukuran yang pas', 'bab6'),
+(54, 'Kebanyakan penyelaman rekreasi dilakukan pada suhu antara 50? F - 80? F. Pencakupan dan ketebalan pakaian selam dapat dipilih sesuai dengan suhu ekstrim panas atau dingin di antara angka tersebut, tetapi umumnya disepakati bahwa pakaian selam basah lengkap harus dipakai pada suhu _______.', '75F - 90F', '55F - 70F', '40F - 50F', '65F - 80F', '65F - 80F', 'bab6'),
+(55, 'Tidak ada alasan kehabisan udara Para penyelam diperlengkapi dengan ________ untuk memantau persediaan udara mereka.', 'Tabung', 'Submersible Pressure Gauge', 'Buoyancy Compensator Device', 'Regulator', 'Submersible Pressure Gauge', 'bab6'),
+(56, 'Singkatan dari S.C.U.B.A adalah __________', 'Self Contained Underwater Buoyancy Apparatus', 'Self Condition Underwater Best Apparatus', 'System Contained Underwater Breathing Apparatus', 'Self Contained Underwater Breathing Apparatus', 'Self Contained Underwater Breathing Apparatus', 'bab6'),
+(57, 'Menggunakan sebuah _______ memberikan banyak manfaat untuk seorang penyelam daripada alat ukur analog biasa dan tabel selam.', 'Dive Computer', 'Submersible Pressure Gauge', 'Fin', 'Masker', 'Dive Computer', 'bab6'),
+(58, 'Pada waktu menggunakan tombol pengendali manual, tarik _______ sampai titik terpanjang untuk mendapatkan efisiensi terbesar dalam pengempisan.', 'Low Pressure Inflator', 'Tali penyetel', 'Katup pembuang', 'Selang Pemompa', 'Katup pembuang', 'bab6'),
+(59, 'Anda mungkin mempertimbangkan untuk menggunakan ________ di perairan yang bersuhu di bawah 65? F (16? C).', 'Pakaian Selam Kering', 'Boot', 'Pakaian Selam Basah', 'Bagasi Penyelam', 'Pakaian Selam Kering', 'bab6'),
+(60, 'Katup Deutsches Industrie Normen (DIN) digunakan pada tabung yang berkapasitas lebih dari _______ psi.', '4000', '3000', '2500', '2000', '3000', 'bab6'),
+(61, 'Berapakah syarat usia untuk mendapatkan Junior Certification?', '10-11 tahun', '12-15 tahun', '5-10 tahun', '10-12 tahun', '12-15 tahun', 'final'),
+(62, 'Berikut merupakan tiga jenis SSI Continuing Education Ratings, kecuali___', 'Speciality Diver', 'Advanced Open Water Diver', 'Advanced Adventurer', 'Master Diver', 'Advanced Adventurer', 'final'),
+(63, 'Berapakah kali penyelaman yang dibutuhkan untuk mengikuti jenjang Speciality Diver?', '50 kali', '12 kali', '100 kali', '24 kali', '12 kali', 'final'),
+(64, 'Berapakah batas kedalaman bagi seorang Open water Diver saat melakukan penyelaman?', '30 meter', '20 meter', '10 meter', '18 meter', '18 meter', 'final'),
+(65, 'Manakah yang tidak termasuk dalam komponen dari program pengalaman SSI?', 'SSI Total DiveLog', 'SSI Level of Experience Decals', 'SSI Levels of Recognition', 'Cap timbul SSI', 'SSI Levels of Recognition', 'final'),
+(66, 'Berapa kali penyelaman yang dibutuhkan untuk mendapatkan Platinum Pro Divers?', '100 kali', '500 kali', '50 kali', '5000 kali', '5000 kali', 'final'),
+(67, 'Ada berapa tingkatan instruktur dalam SSI ?', '3', '5', '4', '2', '5', 'final'),
+(68, 'Manakah yang tidak termasuk dalam SSI Diamond Diver ?', 'Knowledge', 'Experience', 'Equipment', 'Safety', 'Safety', 'final'),
+(69, 'Berapakah rentang usia untuk bisa mendapatkan Special Junior Certification ?', '10-11 tahun', '10-15 tahun', '5-10 tahun', '15-17 tahun', '10-11 tahun', 'final'),
+(70, 'Manakah yang merupakan kegiatan yang dilakukan sebelum penyelamannya ?', 'Safety Stop', 'Decompression Stop', 'Pre Dive Safety Check', 'Giant Stride', 'Pre Dive Safety Check', 'final');
 
 -- --------------------------------------------------------
 
@@ -207,14 +227,14 @@ CREATE TABLE `scores` (
 
 INSERT INTO `scores` (`no`, `userid`, `module`, `testscore`) VALUES
 (1, 1, 'bab1', 10),
-(2, 1, 'bab2', 0),
-(3, 1, 'bab3', 0),
-(4, 1, 'bab4', 0),
-(5, 1, 'bab5', 0),
-(6, 1, 'bab6', 0),
+(2, 1, 'bab2', 10),
+(3, 1, 'bab3', 10),
+(4, 1, 'bab4', 10),
+(5, 1, 'bab5', 10),
+(6, 1, 'bab6', 10),
 (7, 1, 'final', 0),
 (8, 2, 'bab1', 9),
-(9, 2, 'bab2', 0),
+(9, 2, 'bab2', 4),
 (10, 2, 'bab3', 0),
 (11, 2, 'bab4', 0),
 (12, 2, 'bab5', 0),
@@ -282,7 +302,7 @@ ALTER TABLE `module_access`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `review`

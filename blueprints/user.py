@@ -92,7 +92,11 @@ def soallist():
 @user.route("/soal/<bab>", methods=['GET','POST'])
 def bab(bab):
     if is_loggedin():
-        sidebar = {'parent': 'materi', 'child': 'soal'}
+        if bab != 'final':
+            sidebar = {'parent': 'materi', 'child': 'soal'}
+        else:
+            sidebar = {'parent': 'ujian', 'child': 'uas'}
+
         if req.method == "GET":
 
             bablist = ['bab2', 'bab3', 'bab4', 'bab5', 'bab6', 'final']
