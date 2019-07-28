@@ -259,7 +259,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/static/dist/img/avatar5.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ session['username'] }}</span>
+              <span class="hidden-xs">{{ session['fullname'] }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -267,7 +267,7 @@
                 <img src="/static/dist/img/avatar5.png" class="img-circle" alt="User Image">
 
                 <p>
-                  {{ session['username'] }} - Web Developer
+                  {{ session['fullname'] }} - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -289,10 +289,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/profile" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -315,7 +315,7 @@
           <img src="/static/dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{ session['username'] }}</p>
+          <p>{{ session['fullname'] }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -358,7 +358,7 @@
             <li {% if data['sidebar']['child'] == 'materi' %} class="active" {% endif %}><a href="/materi"><i class="fa fa-circle-o"></i> Materi</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="{% if data['sidebar']['parent'] == 'ujian' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>Ujian</span>
@@ -367,11 +367,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/uts"><i class="fa fa-circle-o"></i> UTS</a></li>
-            <li><a href="/uas"><i class="fa fa-circle-o"></i> UAS</a></li>
+            <li {% if data['sidebar']['child'] == 'uas' %}class="active" {% endif %}><a href="/uas"><i class="fa fa-circle-o"></i> UAS</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="{% if data['sidebar']['parent'] == 'account' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Account</span>
             <span class="pull-right-container">
@@ -379,7 +378,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/profile"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li {% if data['sidebar']['child'] == 'profile' %}class="active" {% endif %}><a href="/profile"><i class="fa fa-circle-o"></i> Profile</a></li>
             <li><a href="/logout"><i class="fa fa-circle-o"></i> Logout</a></li>
           </ul>
         </li>

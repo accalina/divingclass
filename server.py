@@ -8,10 +8,12 @@ app.register_blueprint(auth)
 from blueprints.user import user
 app.register_blueprint(user)
 
+from blueprints.admin import admin
+app.register_blueprint(admin)
+
 # TODO: Create feauture page for this enpoints
 @app.route('/uas')
 @app.route('/uts')
-@app.route('/profile')
 def ComingSoon():
     return "This Feature not release yet"
 
