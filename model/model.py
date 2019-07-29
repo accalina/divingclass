@@ -263,6 +263,34 @@ class Model:
             print("Mysql is not connected, Please start the mysql on XAMPP Control Panel")
             sys.exit()
     
+    def genCert(self, username, userid):
+        try:
+            db = mysql.connector.connect(       # database config
+                host="localhost",
+                user="root",
+                passwd="",
+                database="db_divingclass"
+            )
+            cursor = db.cursor(dictionary=True)
+
+            try:
+                sql = "SELECT cast(avg(testscore)as decimal(10,2)) as final FROM `scores` where userid = {}".format(userid)
+                cursor.execute(sql)
+                result = cursor.fetchall()
+                finalscore = result[0]['final']
+                certname = generateCertificate(username, userid, finalscore)
+
+                sql = "UPDATE login SET cert=%s where userid = %s"
+                val = (certname, userid)
+                cursor.execute(sql, val)
+                db.commit()
+                return certname
+            except:
+                return False
+
+        except mysql.connector.errors.InterfaceError as e:
+            print("Mysql is not connected, Please start the mysql on XAMPP Control Panel")
+            sys.exit()
 
     # PAYMENT AND SERVICES ----------------------------------------------------------------------------+
 
@@ -439,3 +467,40 @@ if __name__ == "__main__":
 # END -------------------------------------------+
 
 # cursor.rowcount
+
+def generateCertificate(name, userid, finalscore):
+    from PIL import Image, ImageDraw, ImageFont
+    from datetime import datetime as d
+    year, month, day = str(d.now()).split('.')[0].split(' ')[0].split('-')
+    date = "-".join([day, month, year])
+
+    signature = "{}-DC/Cert/scr_{}".format(userid, finalscore)
+
+    if len(name) <= 25:
+        namelength = (len(name) / 1.3)
+    else:
+        namelength = len(name) * 2.6
+
+    img = Image.open('model/award.jpg')
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype("model/BrushScript.otf", 32)
+
+    # Generating Title
+    draw.text((220, 200), "Completing Diving Course", (50, 50, 50), font=font)
+
+    # Generating Date
+    draw.text((175, 370), date, (50, 50, 50), font=ImageFont.truetype("model/BrushScript.otf", 22))
+
+    # Generating Signature
+    draw.text((450, 370), signature, (50, 50, 50), font=ImageFont.truetype("model/consolai.ttf", 20))
+
+    # Generating Name
+    if len(name) <= 15:
+        draw.text((260 + namelength, 300), name, (50, 50, 50), font=font)
+    else:
+        draw.text((260 - namelength, 300), name, (50, 50, 50), font=font)
+
+    filename = '{}_Cert.jpg'.format(userid)
+    path = "static/cert/"
+    img.save( path + filename )
+    return filename

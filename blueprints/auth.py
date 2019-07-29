@@ -33,6 +33,7 @@ def login():
                 session['username'] = (result[0]['username']).capitalize()
                 session['fullname'] = result[0]['fullname']
                 session['level'] = result[0]['level']
+                session['cert'] = result[0]['cert']
                 return redirect("/index")
             else:
                 return redirect(f"/login?msg=Invalid Username / Password")
