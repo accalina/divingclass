@@ -84,8 +84,12 @@
                   <tr>
                     <td>{{ item['module'] }}</td>
                     <td>
-                      {% if item['active'] != 0 %}
-                      <span class="label bg-green">Pembayaran sudah Lunas, Module siap digunakan</span>
+                      {% if item['payment'] != '...' %}
+                        {% if item['active'] != 0 %}
+                        <span class="label bg-green">Pembayaran sudah Lunas, Module siap digunakan</span>
+                        {% else %}
+                        <span class="label bg-yellow"> Data Pembayaran ditemukan, menunggu verifikasi admin</span>
+                        {% endif %}
                       {% else %}
                       <span class="label bg-red"> Data Pembayaran tidak ditemukan</span>
                       {% endif %}

@@ -16,15 +16,29 @@ def is_loggedin():
 def dashboard():
     if is_loggedin():
         sidebar = {'parent': 'dashboard', 'child': 'dashboard'}
+        paymentlist = m.getUnverifiedPayment()
         userlist, adminlist = m.getAdminInfo()
         data = {
             'sidebar': sidebar,
             'userlist': userlist,
             'usercount': len(userlist),
             'adminlist': adminlist,
-            'admincount': len(adminlist)
-
+            'admincount': len(adminlist),
+            'paymentlist': paymentlist
         }
         return render_template("admin/dashboard.html", data=data)
+    else:
+        return redirect("/login")
+
+@admin.route('/verified')
+def verified():
+    if is_loggedin():
+        userid = request.args.get('id','')
+        
+        result = m.verified(userid)        
+        if result:
+            return redirect('/admin')
+        else:
+            return "There's an error on verifying the payment data, please contact administrator"
     else:
         return redirect("/login")
