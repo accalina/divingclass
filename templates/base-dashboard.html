@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="/static/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/static/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -259,7 +261,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/static/dist/img/avatar5.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{ session['username'] }}</span>
+              <span class="hidden-xs">{{ session['fullname'] }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -267,7 +269,7 @@
                 <img src="/static/dist/img/avatar5.png" class="img-circle" alt="User Image">
 
                 <p>
-                  {{ session['username'] }} - Web Developer
+                  {{ session['fullname'] }} - Web Developer
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -289,10 +291,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/profile" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -315,7 +317,7 @@
           <img src="/static/dist/img/avatar5.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{ session['username'] }}</p>
+          <p>{{ session['fullname'] }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -333,7 +335,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <li class="{% if data['sidebar']['parent'] == 'dashboard' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -341,11 +343,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="/dashboard"><i class="fa fa-circle-o"></i> Dashboard </a></li>
-            <li><a href="/subscribe"><i class="fa fa-circle-o"></i> Subscription</a></li>
+            <li {% if data['sidebar']['child'] == 'dashboard' %} class="active" {% endif %} ><a href="/dashboard"><i class="fa fa-circle-o"></i> Dashboard </a></li>
+            <li {% if data['sidebar']['child'] == 'subscribe' %} class="active" {% endif %} ><a href="/subscribe"><i class="fa fa-circle-o"></i> Subscription</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="{% if data['sidebar']['parent'] == 'materi' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-pie-chart"></i>
             <span>Materi</span>
@@ -354,11 +356,13 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/soal"><i class="fa fa-circle-o"></i> Soal</a></li>
-            <li><a href="/materi"><i class="fa fa-circle-o"></i> Materi</a></li>
+            <li {% if data['sidebar']['child'] == 'soal' %} class="active" {% endif %}><a href="/soal"><i class="fa fa-circle-o"></i> Soal</a></li>
+            <li {% if data['sidebar']['child'] == 'materi' %} class="active" {% endif %}><a href="/materi"><i class="fa fa-circle-o"></i> Materi</a></li>
           </ul>
         </li>
-        <li class="treeview">
+
+        {% if session['level'] != 9 %}
+        <li class="{% if data['sidebar']['parent'] == 'ujian' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>Ujian</span>
@@ -367,11 +371,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/uts"><i class="fa fa-circle-o"></i> UTS</a></li>
-            <li><a href="/uas"><i class="fa fa-circle-o"></i> UAS</a></li>
+            <li {% if data['sidebar']['child'] == 'uas' %}class="active" {% endif %}><a href="/soal/final"><i class="fa fa-circle-o"></i> UAS</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        {% endif %}
+
+        <li class="{% if data['sidebar']['parent'] == 'account' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Account</span>
             <span class="pull-right-container">
@@ -379,7 +384,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/profile"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li {% if data['sidebar']['child'] == 'profile' %}class="active" {% endif %}><a href="/profile"><i class="fa fa-circle-o"></i> Profile</a></li>
             <li><a href="/logout"><i class="fa fa-circle-o"></i> Logout</a></li>
           </ul>
         </li>
@@ -424,8 +429,14 @@
 </div>
 <!-- ./wrapper -->
 
+
 <!-- jQuery 3 -->
 <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- DataTables -->
+<script src="/static/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/static/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="/static/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

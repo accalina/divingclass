@@ -1,0 +1,83 @@
+{% extends 'base-dashboard.html' %}
+
+<!-- Set Title -->
+{% block title %} Subscription {% endblock %}
+<!-- /Set Title -->
+
+
+{% block content %}
+<script src="/static/vue.js"></script>
+    <!-- Main content -->
+    <section class="content">
+      <!-- Main row -->
+      <div class="row">
+
+
+        <!-- Left col -->
+        <section class="col-lg-10 col-lg-offset-1">
+
+          <!-- Subscription -->
+          <div class="box box-primary">
+            <div class="box-header">
+              <i class="ion ion-clipboard"></i>
+
+              <h3 class="box-title">Update User Data</h3>
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
+              <form action="/profile" method="POST">
+                <table class="table">
+                  <tr>
+                    <th> Username : </th>
+                    <th><input type="text" class="form-control" value="{{ data['userdata'] }}" name="username"></th>
+                  </tr>
+                  <tr>
+                    <th> Fullname : </th>
+                    <th><input type="text" class="form-control" value="{{ session['fullname'] }}" name="fullname"></th>
+                  </tr>
+                  <tr>
+                    <th> User Status : </th>
+                    <th>
+                      {% if session['level'] == 1 %}
+                        <span class="label bg-green"> Student </span>
+                      {% elif session['level'] == 9 %}
+                        <span class="label bg-blue"> Administrator </span>
+                      {% endif %}
+                    </th>
+                  </tr>
+                </table>
+                <input type="submit" value="Update Data" class="btn btn-primary">
+              </form>
+            </div>
+          </div>
+          <!-- /.box -->
+
+        </section>
+        <!-- /.Left col -->
+
+      </div>
+      <!-- /.row (main row) -->
+
+    </section>
+    <!-- /.content -->
+
+    <script>
+      app = new Vue({
+        el: "section.content",
+        data: {
+          modul1: "",
+          modul2: "",
+          modul3: "",
+          modul4: "",
+          modul5: "",
+          modul6: "",
+          modul7: "",
+          modul8: "",
+          modul9: "",
+          modul10: "",
+        }
+      })
+    </script>
+{% endblock %}

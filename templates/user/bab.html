@@ -17,12 +17,13 @@
           <div class="nav-tabs-custom">
             <!-- Tabs within a box -->
             <ul class="nav nav-tabs pull-right">
-              <li class="active"><a href="#revenue-chart" data-toggle="tab">Soal Bab 1</a></li>
+              <li class="active"><a href="#revenue-chart" data-toggle="tab">Soal {{ data['module'] }}</a></li>
               <li class="pull-left header"><i class="fa fa-inbox"></i> Latihan</li>
             </ul>
             <div class="tab-content no-padding">
 
             <form action="/soal/{{ data['endpoint'] }}" method="POST">
+              <input type="text" name="module" value="{{ data['module']}}" hidden>
               <div class="box-body">
                 <div class="box-group" id="accordion">
                   <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->

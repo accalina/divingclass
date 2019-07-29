@@ -1,0 +1,4 @@
+# Ignore Python Cache Folder
+__pycache__/
+blueprints/__pycache__/
+model/__pycache__/

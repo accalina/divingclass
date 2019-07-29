@@ -4,21 +4,15 @@ from model.model import Model
 auth = Blueprint("auth", __name__, static_folder="../static", template_folder="../templates")
 m = Model()
 
-
-# HELPER ----------------------------------------+
-def is_loggedin():
-    if 'username' in session:
-        return redirect("/dashboard")
-    else:
-        return redirect("/login")
-
 # ENDPOINT --------------------------------------+
 @auth.route("/")
 @auth.route("/index")
-@auth.route("/dashboard")
 def index():
     if 'username' in session:
-        return render_template("user/dashboard.html")
+        if session['level'] == 9:
+            return redirect("/admin")
+        else:
+            return redirect("/dashboard")
     else:
         return redirect("/login?msg=you must Login to continue")
 
@@ -39,11 +33,12 @@ def login():
                 session['username'] = (result[0]['username']).capitalize()
                 session['fullname'] = result[0]['fullname']
                 session['level'] = result[0]['level']
-                return redirect("/dashboard")
+                session['cert'] = result[0]['cert']
+                return redirect("/index")
             else:
                 return redirect(f"/login?msg=Invalid Username / Password")
     else:
-        return redirect("/dashboard")
+        return redirect("/index")
 
 
 @auth.route("/register", methods=["GET", "POST"])
