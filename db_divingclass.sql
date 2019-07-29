@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2019 at 06:23 AM
+-- Generation Time: Jul 29, 2019 at 08:56 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -33,17 +33,18 @@ CREATE TABLE `login` (
   `username` varchar(30) NOT NULL,
   `password` text NOT NULL,
   `fullname` text NOT NULL,
-  `level` int(11) NOT NULL
+  `level` int(11) NOT NULL,
+  `cert` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`userid`, `username`, `password`, `fullname`, `level`) VALUES
-(1, 'accalina', '$2b$12$oOL/jDP75o6CGhXh/8py8e8Frg2vZ5UBv7JIaSHqSi9sNWaxqy.02', 'Accalina Shirosachi', 1),
-(2, 'didit', '$2b$12$vY88mU.SVmfLtWJHh/.XIOpotdNAfitGAKvuceRxJiCgBt3Tnxn5G', 'Didit Nugroho', 1),
-(3, 'admin', '$2b$12$S.1MOFjtLnB66Ayhvp6b1OaXUEs.Z2SC3aE1wqFeO/EZeb79HZD8C', 'Administrator', 9);
+INSERT INTO `login` (`userid`, `username`, `password`, `fullname`, `level`, `cert`) VALUES
+(1, 'accalina', '$2b$12$oOL/jDP75o6CGhXh/8py8e8Frg2vZ5UBv7JIaSHqSi9sNWaxqy.02', 'Accalina Shirosachi', 1, '1_Cert.jpg'),
+(2, 'didit', '$2b$12$vY88mU.SVmfLtWJHh/.XIOpotdNAfitGAKvuceRxJiCgBt3Tnxn5G', 'Didit Nugroho', 1, ''),
+(3, 'admin', '$2b$12$S.1MOFjtLnB66Ayhvp6b1OaXUEs.Z2SC3aE1wqFeO/EZeb79HZD8C', 'Administrator', 9, '');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ INSERT INTO `module_access` (`no`, `userid`, `module`, `active`, `payment`) VALU
 (7, 1, 'final', 1, '1_final_bukti-pembayaran_11-09-54.gif'),
 (8, 2, 'bab1', 1, '2_bab1_bukti-pembayaran_09-41-15.jpg'),
 (9, 2, 'bab2', 1, '2_bab2_bukti-pembayaran_09-42-11.jpg'),
-(10, 2, 'bab3', 0, '...'),
+(10, 2, 'bab3', 0, '2_bab3_bukti-pembayaran_11-08-06.jpg'),
 (11, 2, 'bab4', 0, '...'),
 (12, 2, 'bab5', 0, '...'),
 (13, 2, 'bab6', 0, '...'),
@@ -232,7 +233,7 @@ INSERT INTO `scores` (`no`, `userid`, `module`, `testscore`) VALUES
 (4, 1, 'bab4', 10),
 (5, 1, 'bab5', 10),
 (6, 1, 'bab6', 10),
-(7, 1, 'final', 0),
+(7, 1, 'final', 8),
 (8, 2, 'bab1', 9),
 (9, 2, 'bab2', 4),
 (10, 2, 'bab3', 0),

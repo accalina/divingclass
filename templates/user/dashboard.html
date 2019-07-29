@@ -106,6 +106,13 @@
                       {% else %}
                       <span class="label bg-red">{{ item['testscore'] }} - Gagal</span>
                       {% endif %}
+                        {% if item['module'] == 'final' and item['testscore'] >= 7 %}
+                          {% if session['cert'] != '' %}
+                          <a target="_blank" href="/static/cert/{{ session['cert'] }}"><span class="label bg-blue">View Certificate</span></a>
+                          {% else %}
+                          <a href="/cert"><span class="label bg-yellow">Generate Certificate</span></a>
+                          {% endif %}
+                        {% endif %}
                     </td>
                   </tr>
                   {% endfor %}

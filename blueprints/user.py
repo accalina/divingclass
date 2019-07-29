@@ -150,3 +150,17 @@ def bab(bab):
                 return "Saving Score failed, please contact Administrator!"
     else:
         return redirect("/login")
+
+
+@user.route('/cert')
+def gencert():
+    if is_loggedin():
+        result = m.genCert(session['fullname'], session['userid'])
+        if result != False:
+            session['cert'] = result
+            return redirect('/dashboard')
+        else:
+            return "There's an Error on generating Certificate, Please contact Administrator"
+    else:
+        return redirect("/login")
+    
