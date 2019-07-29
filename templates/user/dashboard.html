@@ -85,7 +85,7 @@
             </ul>
             <div class="tab-content no-padding">
               <!-- Morris chart - Sales -->
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="paymentdata">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -111,6 +111,7 @@
                   {% endfor %}
                 </tbody>
               </table>
+              
             </div>
           </div>
           <!-- /.nav-tabs-custom -->
@@ -174,4 +175,15 @@
 
     </section>
     <!-- /.content -->
+
+    <script>
+        $('#paymentdata').DataTable({
+          'paging': true,
+          'lengthChange': false,
+          'searching': false,
+          'ordering': true,
+          'info': true,
+          'autoWidth': false
+        })
+    </script>
 {% endblock %}

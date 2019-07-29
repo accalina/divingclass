@@ -314,7 +314,7 @@ class Model:
             cursor = db.cursor(dictionary=True)
 
             try:
-                sql = "UPDATE `module_access` SET active=1, payment=%s WHERE userid = %s AND module = %s"
+                sql = "UPDATE `module_access` SET payment=%s WHERE userid = %s AND module = %s"
                 val = (filename, userid, module)
                 cursor.execute(sql, val)
                 db.commit()
@@ -380,6 +380,50 @@ class Model:
         adminlist = cursor.fetchall()
 
         return userlist, adminlist
+
+    def getUnverifiedPayment(self):
+        try:
+            db = mysql.connector.connect(       # database config
+                host="localhost",
+                user="root",
+                passwd="",
+                database="db_divingclass"
+            )
+            cursor = db.cursor(dictionary=True)
+
+            # Get Userlist
+            sql = "SELECT a.no, b.username ,a.module, a.active, a.payment FROM module_access as a left join login as b on a.userid = b.userid WHERE a.payment != '...' AND a.active = '0'"
+            cursor.execute(sql)
+            paymentlist = cursor.fetchall()
+            return paymentlist
+
+        except mysql.connector.errors.InterfaceError as e:
+            print("Mysql is not connected, Please start the mysql on XAMPP Control Panel")
+            sys.exit()
+
+    def verified(self, userid):
+        try:
+            db = mysql.connector.connect(       # database config
+                host="localhost",
+                user="root",
+                passwd="",
+                database="db_divingclass"
+            )
+            cursor = db.cursor(dictionary=True)
+
+            try:
+                sql = "UPDATE module_access SET active=1 WHERE no = {}".format(userid)
+                cursor.execute(sql)
+                db.commit()
+                return True
+            except:
+                return False
+
+        except mysql.connector.errors.InterfaceError as e:
+            print("Mysql is not connected, Please start the mysql on XAMPP Control Panel")
+            sys.exit()
+        
+
 
 
 # RUN -------------------------------------------+

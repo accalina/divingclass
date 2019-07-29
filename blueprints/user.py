@@ -15,9 +15,12 @@ def is_loggedin():
 @user.route("/dashboard")
 def dashboard():
     if is_loggedin():
-        userscore = m.getUserScore(session['userid'])
-        sidebar = {'parent': 'dashboard', 'child': 'dashboard'}
-        return render_template("user/dashboard.html", data={'sidebar': sidebar, 'userscore': userscore})
+        if session['level'] != 9:
+            userscore = m.getUserScore(session['userid'])
+            sidebar = {'parent': 'dashboard', 'child': 'dashboard'}
+            return render_template("user/dashboard.html", data={'sidebar': sidebar, 'userscore': userscore})
+        else:
+            return redirect('/admin')
     else:
         return redirect("/login")
 
