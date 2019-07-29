@@ -358,6 +358,8 @@
             <li {% if data['sidebar']['child'] == 'materi' %} class="active" {% endif %}><a href="/materi"><i class="fa fa-circle-o"></i> Materi</a></li>
           </ul>
         </li>
+
+        {% if session['level'] != 9 %}
         <li class="{% if data['sidebar']['parent'] == 'ujian' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
@@ -370,6 +372,8 @@
             <li {% if data['sidebar']['child'] == 'uas' %}class="active" {% endif %}><a href="/soal/final"><i class="fa fa-circle-o"></i> UAS</a></li>
           </ul>
         </li>
+        {% endif %}
+
         <li class="{% if data['sidebar']['parent'] == 'account' %}active{% endif %} treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Account</span>
